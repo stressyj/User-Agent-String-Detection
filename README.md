@@ -95,7 +95,7 @@ Index=main sourcetype=stream:http site=www.company.com
 
 &nbsp;
 
-Now perhaps I have seen some dodgy user agent strings or maybe there are some that look a little fishy, I am going to go to https://explore.whatismybrowser.com/useragents/parse/#parse-useragent
+Now perhaps I have seen some dodgy user agent strings or maybe there are some that look a little fishy, I am going to run them through https://explore.whatismybrowser.com/useragents/parse/#parse-useragent
 
 Now when I go through these user agent strings, I’m going to be looking for indicators that show me it’s foreign. E.g a foreign language code like ko-KP instead of en-US or foreign font particularly Chinese or Russian. Ko-KP is North Korean.
 
