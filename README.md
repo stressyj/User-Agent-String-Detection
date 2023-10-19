@@ -75,7 +75,7 @@ I may want to check if there are specific hosts that have not sent data to Splun
 &nbsp;
 
 
-I’ll click on apps then enterprise security to check for assets and identities. I’ll then go to security domains then identity then asset center for systems then identify center for users.
+I’ll click on apps then enterprise security to check for assets and identities. I’ll then go to security domains, then identity, then asset center for systems then identify center for users.
 
 <p align="center">
 <br/>
