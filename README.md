@@ -169,6 +169,11 @@ The ASN or autonomous system number and the RIR or regional internet register co
 
 I will go on v4.whois.cymru.com lookup v1.0 to confirm my findings.
 
+<p align="center">
+<br/>
+<img src="https://i.imgur.com/1bSLv6f.png" height="80%" width="80%" alt="Assets and Identities"/>
+<br />
+
 I’ll also google any VPN’s I see during the look up.
 
 If I drill down for more detail. I could go on the sourcetype=stream:http field to have a look at the http_content_type and have a look at the uri_path. Let's assume I've found
