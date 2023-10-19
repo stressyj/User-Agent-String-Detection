@@ -184,7 +184,7 @@ I’ll gather up URI path, timestamps and url and include it in my search:
 Index=main sourcetype=stream:http “Mozilla/5.0 (x11; U , Linux i686; ko-KP, rv: 19.1 1br) Gecko/2939363 Fedora/1.9 1-2.5. Rs3.0 NaemaraBrowser/3.5b4” http_content_type = companycontacts.xlsx
 | table _time src dest uri_path url
 
-Which should indicate that the source ip address downloaded the file from the company website. 
+Which should indicate that user behind the source ip address downloaded the file from the company website. 
 
 
 
