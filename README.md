@@ -157,7 +157,7 @@ Https://whois.domaintools.com will give us information about the IP address.
 
 &nbsp;
 
-A search with [Ripe.Whois.net](https://apps.db.ripe.net/db-web-ui/query) will give us the asn:
+A search with https://apps.db.ripe.net/db-web-ui/query will give us the asn:
 
 <p align="center">
 <br/>
