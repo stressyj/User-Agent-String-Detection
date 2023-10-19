@@ -24,12 +24,15 @@ I am going to want to start by having a look at metadata just so I have an under
 <p align="left">
 | metadata type=sourcetypes index=main
 
+&nbsp;
+
 
 I want to see all the hosts that have data in the ‘os’ index because I know data in that index may be of importance to me in my hunt:
 
 <p align="left">
 | metadata type=hosts index=os
 
+&nbsp;
 
 Let us just navigate the environment and know what kind of data we are working with:
 
@@ -41,6 +44,8 @@ Let us just navigate the environment and know what kind of data we are working w
 | eval lastTime=strftime(lastTime, "%Y-%m-%d %H:%M:%S")
 <p align="left">
 | eval recentTime=strftime(recentTime, "%Y-%m-%d %H:%M:%S")
+
+&nbsp;
 
 I may want to check if there are specific hosts that have not sent data to Splunk in the past 24 hours. The command for that is:
 
@@ -67,6 +72,8 @@ I may want to check if there are specific hosts that have not sent data to Splun
 <p align="left">
 | sort - “Minutes Behind”
 
+&nbsp;
+
 
 I’ll click on apps then enterprise security to check for assets and identities. I’ll then go to security domains then identity then asset center for systems then identify center for users.
 
@@ -75,6 +82,7 @@ I’ll click on apps then enterprise security to check for assets and identities
 <img src="https://i.imgur.com/jv7TPGV.png" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
 
+&nbsp;
 
 I’m going to start with looking for user agent strings to see where the adversary may be sloppy with their trade craft and left some nice clues for us. The command for this is:
 
@@ -84,6 +92,8 @@ Index=main sourcetype=stream:http site=www.company.com
 | stats count by http_user_agent
 <p align="left">
 | sort - count
+
+&nbsp;
 
 Now perhaps I have seen some dodgy user agent strings or maybe there are some that look a little fishy, I am going to go to https://explore.whatismybrowser.com/useragents/parse/#parse-useragent
 
@@ -99,12 +109,15 @@ Googling the browser will help give us an insight into where the browser is from
 <img src="https://i.imgur.com/glHMPoo.jpg" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
 
+&nbsp;
 
 Let’s say I find a dodgy string. I’m going to drill down into it and see what systems this user agent touched. I’ll particularly have a look at the uri_path
 
 <p align="center">
 Index=main sourcetype=stream:http site=www.company.com 
 “Mozilla/5.0 (X11; U; Linux i686; ko-KP, rv: 19.1 1br) Gecko/20130508 Fedora/1.9 1-2.5. Rs3.0 NaenaraBrowser/3.5b4”
+
+&nbsp;
 
 I am now going to check which systems this User Agent has touched. Here is the command:
 
@@ -113,12 +126,16 @@ Index=main sourcetype=stream:http site=www.company.com
 “Mozilla/5.0 (X11; U; Linux i686; ko-KP, rv: 19.1 1br) Gecko/20130508 Fedora/1.9 1-2.5. Rs3.0 NaenaraBrowser/3.5b4”
 | stats count by src dest
 
+&nbsp;
+
 Once I’ve seen the source / destination ip pairs that are linked to this user agent string. I can then go back to the asset centre to see which systems are linked to particular ip addresses.
 
 <p align="center">
 <br/>
 <img src="https://i.imgur.com/VmXYSIq.png" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
+
+&nbsp;
 
 Let's say during my search, I came across these fictional IP addresses/systems that the User Agent has interacted with. I’ll run the following commands to look for any extra activity
 /Traffic going between them in either direction:
@@ -129,6 +146,8 @@ Index=main sourcetype=stream:http src=102.203.47.86 dest=172.16.0.92
 Index=main sourcetype=stream:http src=172.16.0.92 dest=102.203.47.86
 | stats count
 
+&nbsp;
+
 Https://whois.domaintools.com will give us information about the IP address.
 
 <p align="center">
@@ -136,6 +155,7 @@ Https://whois.domaintools.com will give us information about the IP address.
 <img src="https://i.imgur.com/whIsaJi.png" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
 
+&nbsp;
 
 A search with [Ripe.Whois.net](https://apps.db.ripe.net/db-web-ui/query) will give us the asn:
 
@@ -143,6 +163,7 @@ A search with [Ripe.Whois.net](https://apps.db.ripe.net/db-web-ui/query) will gi
 <br/>
 <img src="https://i.imgur.com/XjmAi7i.png" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
+
 
 The ASN or autonomous system number and the RIR or regional internet register could be looked into and it’s possible to determine the route that the attacker took to get to our systems.
 
