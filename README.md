@@ -27,8 +27,6 @@ I am going to want to start by having a look at metadata just so I have an under
 &nbsp;
 
 
-I want to see all the hosts that have data in the ‘os’ index because I know data in that index may be of importance to me in my hunt:
-
 <p align="left">
 | metadata type=hosts index=os
 
@@ -96,6 +94,12 @@ Index=main sourcetype=stream:http site=www.company.com
 &nbsp;
 
 Now perhaps I have seen some dodgy user agent strings or maybe there are some that look a little fishy, I am going to run them through https://explore.whatismybrowser.com/useragents/parse/#parse-useragent
+
+<p align="center">
+<br/>
+<img src="https://i.imgur.com/qJAdGkq.png" height="80%" width="80%" alt="Assets and Identities"/>
+<br />
+
 
 Now when I go through these user agent strings, I’m going to be looking for indicators that show me it’s foreign. E.g a foreign language code like ko-KP instead of en-US or foreign font particularly Chinese or Russian. Ko-KP is North Korean.
 
@@ -174,7 +178,7 @@ I will go on v4.whois.cymru.com lookup v1.0 to confirm my findings.
 <img src="https://i.imgur.com/1bSLv6f.png" height="80%" width="80%" alt="Assets and Identities"/>
 <br />
 
-I’ll also google any VPN’s I see during the look up.
+Usually attackers will use VPNs during their attacks, so if any come up, I’ll also google any VPN’s I see during the look up.
 
 If I drill down for more detail. I could go on the sourcetype=stream:http field to have a look at the http_content_type and have a look at the uri_path. Let's assume I've found
 an companycontacts.xlsx file served up to a naenara browser request: 
